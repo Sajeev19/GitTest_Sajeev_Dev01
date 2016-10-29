@@ -1,0 +1,76 @@
+<apex:page >
+  
+<!-- 
+  
+<apex:page controller="MultiAddCExController">
+
+ http://kemissalesforceworld.wordpress.com/2012/12/29/managing-multiple-records-at-a-time-via-visualforce/
+
+  <script language="JavaScript" type="text/javascript">
+        function CloseAndRefresh(){
+            window.parent.location.href="/{!$CurrentPage.parameters.id}"; self.close(); }
+    </script>
+<apex:pageMessages />
+<apex:form >
+    <apex:pageBlock title="Campaign Expense Values">
+    <apex:pageBlockButtons >
+        <apex:pagemessages rendered="true" id="msg2" />
+        <apex:commandButton value="Add New" action="{!add}" rerender="rows" status="outStatus"/>
+        <apex:commandButton value="Reset" action="{!reset}" rerender="rows" status="outStatus" immediate="true" />
+        <apex:commandButton action="{!save}" value="Save and Close" oncomplete="javascript:CloseAndRefresh()" rerender="rows,msg2" status="outStatus"/>
+    </apex:pageBlockButtons>
+        <apex:pageBlockTable width="80%" align="center" value="{!cexs}" var="c" id="rows" >
+            <apex:column width="30%" headerValue="Item Name">
+                <apex:inputField value="{!c.Item__c}" required="true"/>
+            </apex:column>
+            <apex:column headervalue="Amount"><apex:inputField value="{!c.Cost__c}" required="true"/>
+            </apex:column>
+                <apex:column headervalue="Date of Expense"><apex:inputField value="{!c.Date_of_Expense__c}" />
+            </apex:column>
+        </apex:pageBlockTable>
+    </apex:pageblock>
+</apex:form>
+
+ 
+</apex:page>
+
+public class MultiAddCExController {
+
+//http://kemissalesforceworld.wordpress.com/2012/12/29/managing-multiple-records-at-a-time-via-visualforce/
+
+
+    List <Campaign_Expense__c> CExList;
+    public Id cID = ApexPages.currentPage().getParameters().get('Id'); //grab the Campaign ID
+    public Id getID {get; set;}
+    
+    public PageReference reset()  { //pull at most 8 expense records to show so we don't clutter up the page
+        CExList = [select name, Campaign__c, Item__c, Cost__c, Date_of_Expense__c from Campaign_Expense__c where Campaign__c =: cID order by createddate limit 8 ];
+        return null; //stay on the vf page
+    }
+   
+    public List <Campaign_Expense__c> getCExs() {
+       if(CExList == null) reset();
+       return CExList;
+   }
+    
+    public void setAccounts(List <Campaign_Expense__c> cexs) {
+       CExList = cexs;
+    }
+    
+    public PageReference save() {//upsert records on save
+        upsert CExList;
+        ApexPages.Message myMsg = new ApexPages.message(ApexPages.Severity.Info, 'Records Saved Successfully'); //show confirmation message on save
+        ApexPages.addMessage(myMsg);
+        return null;
+    }
+    public PageReference add() {
+        CExList.add(New Campaign_Expense__c(Campaign__c = cID)); //add records to Campaign Expense and associate with current Campaign
+        return null; 
+    }
+
+}
+
+
+  
+-->
+</apex:page>

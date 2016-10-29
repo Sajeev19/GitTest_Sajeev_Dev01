@@ -1,0 +1,39 @@
+<apex:page controller="MultipleMerge001Controller">
+   <apex:form id="formId">
+    <apex:sectionHeader title="abcd" subtitle="abcd"/>
+    <apex:pageBlock id="pgTitle">
+          <apex:pageblockSection >
+            <apex:pageblockSectionItem >
+                <apex:outputLabel value="Select Object"></apex:outputLabel>
+                <apex:selectList value="{!selectedObjectName }" multiselect="false" size="1">
+                   <apex:selectOptions value="{!items}" />   
+                   
+                   <!--
+                    <apex:actionSupport event="onchange" action="{!showButtons}" reRender="buttons" />
+                    -->
+                                             
+                </apex:selectList>
+            </apex:pageblockSectionItem>
+           </apex:pageblockSection>
+     
+     
+            <apex:pageblockButtons >
+                <apex:commandButton value="merge" action="{!showResult}"/>
+             <apex:commandButton value="selectrule" action="{!selectRules}"/>
+            </apex:pageblockButtons>
+
+    </apex:pageBlock>
+    
+    <apex:outputPanel id="rules" rendered="{!renderRule}">
+        <apex:pageblock title="pqrs">
+       </apex:pageblock>
+    </apex:outputPanel>
+    
+    <apex:outputPanel id="result" rendered="{!renderTitle}">
+      <apex:pageblock title="result">
+      </apex:pageblock>
+    
+    </apex:outputPanel>
+    
+  </apex:form>
+</apex:page>

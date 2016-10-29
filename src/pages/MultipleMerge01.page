@@ -1,0 +1,51 @@
+<apex:page id="page_id" controller="MultipleMergeController01">
+  <apex:form id="form_id">
+    <apex:pageBlock id="pbTitle">
+      <apex:outputLabel value="Please select the objects to merge"/>
+      <!--
+      <select id="ddObjects" onchange="ChangePanel()" style="font-size:10pt;width:100px;">
+                <option value="Contact">Contact</option>
+                <option value="Lead">Lead</option>
+                <option value="Account">Account</option>
+      </select>
+      -->
+      <apex:selectList value="{!objectToMerge}" multiselect="false" size="1">
+          <apex:selectOptions value="{!items}" />
+      </apex:selectList>
+    </apex:pageBlock>
+    <apex:pageblock id="pbCMain" title="Contact Merge Controls" >
+      <apex:pageBlockSection id="pbsCMain" columns="1">
+        <apex:pageBlockSectionItem >
+          <apex:outputText value="Total number of Contact sets" />
+          <apex:outputLabel value="" />
+        </apex:pageBlockSectionItem>
+        <apex:pageBlockSectionItem >
+          <apex:outputText value="Number of Contact sets left to process" />
+          <apex:outputLabel value="" />
+        </apex:pageBlockSectionItem>
+      </apex:pageBlockSection>
+    </apex:pageblock>
+    <apex:pageBlock id="pbCMain2" title="Contact Merge Rules" >
+      <apex:dataList value="{!contactFileds}" var="c">
+          <apex:outputText value="{!c}"/>
+      </apex:dataList>
+    </apex:pageBlock>
+    
+     <apex:pageBlock id="pbAccount" title="Contact Merge Rules">
+            <apex:dynamicComponent componentValue="{!contactPageBlockSection}" />
+     </apex:pageBlock>
+     
+     <apex:pageBlock >
+         <apex:pageBlockSection >
+             <apex:pageBlockSectionItem >
+  
+                 <apex:commandButton value="MergeContacts"  action="{!contactMerge1}" />
+
+             </apex:pageBlockSectionItem>
+         
+         </apex:pageBlockSection>
+    
+     </apex:pageBlock>
+    
+  </apex:form>
+</apex:page>

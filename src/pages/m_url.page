@@ -1,0 +1,130 @@
+<apex:page >
+  <!-- 
+   
+  Organizing Your Salesforce Apex Codebase
+  
+  http://iwritecrappycode.wordpress.com/2011/09/21/organizing-your-salesforce-apex-codebase/
+  
+  http://www.solutions.forcetree.com/
+  
+  http://www.forcetree.com/
+  
+  
+  Lead Assignment Rules
+  http://certifiedondemand.com/configuring-lead-assignment-rules-in-salesforce/
+  
+  Dynamic VF Coponents
+    http://learn4sfdc.blogspot.co.uk/2012/08/examples-of-dynamic-visualforce.html
+    http://www.redpointsolutions.com/build-killer-visualforce-pages-with-dynamic-visualforce-components
+
+  Apex Docs
+  http://docs.database.com/dbcom/en-us/db_apex/apex_methods_system_set.htm?version=184.0
+
+  Formula
+    http://salesforce-walker.blogspot.co.uk/2012/01/advanced-formula-fields.html
+      
+    This formula evaluates Annual Revenue, Billing Country, and Type, and assigns a value of “Hot,” “Warm,” or “Cold.”
+    IF (AND (AnnualRevenue > 10000000,
+    CONTAINS (CASE (BillingCountry, "United States", "US", "America", "US", "USA", "US", "NA"), "US")),
+    IF(ISPICKVAL(Type, "Manufacturing Partner"), "Hot",
+    IF(OR (ISPICKVAL (Type, "Channel Partner/Reseller"),
+    ISPICKVAL(Type, "Installation Partner")), "Warm", "Cold")),
+    "Cold")
+//
+http://andyinthecloud.com/2012/10/14/winter13-chaining-batch-jobs-with-great-power/
+
+    
+    How To: Call Apex code from a Custom Button July 16, 2013
+    New Tool : Declarative Rollups for Lookups! July 7, 2013
+    “Look ma, no hands!” : Automating Install and Uninstall of Packages! June 23, 2013
+    
+    Managing your DML and Transactions with a Unit Of Work June 9, 2013
+    
+    Savings on Dreamforce 2013 Admission! May 27, 2013
+    Hidden Gem no longer Hidden! Database.Error.getFields May 25, 2013
+    Code Coverage for WSDL2Apex Generated Classes May 11, 2013
+    Scripting the Apex Metadata API and Batch Apex Support May 6, 2013
+    
+    Apex Enterprise Patterns – Domain Layer April 24, 2013
+    
+    Summer’13 Pre-Release : Metadata API, Tooling API and Apex Mocking? April 21, 2013
+    
+    
+//
+
+
+// Data Loading
+
+    Extreme Force.com Data Loading, Part 1: Tune Your Data Model
+    http://blogs.developerforce.com/engineering/2013/02/extreme-salesforce-data-loading-part-1-tune-your-data-model.html
+    
+    Extreme Force.com Data Loading, Part 2: Loading into a Lean Salesforce Configuration
+    
+    Part 3 :
+    
+    Part 4 :
+    
+    DUPLICATE DATA IN SALESFORCE: A REVIEW OF THREE SALESFORCE DATA CLEANSING TOOLS
+    http://www.madronasg.com/blog/duplicate-data-salesforce-review-three-salesforce-data-cleansing-tools#.UgUFV5KKKSg
+
+    http://starrforce.com/2012/07/a-salesforce-best-practice-tips-for-importing-salesforce-data/
+     
+    Date Format
+    -----------
+    
+    http://starrforce.com/2012/07/a-salesforce-best-practice-tips-for-importing-salesforce-data/
+    
+    
+    Date formatting is different for the import wizards and the Data Loader – 
+    For the import wizards, see article 97633 in Salesforce help. 
+    
+    For the Data Loader, see articles 101977, 344999 and 105697 in Salesforce help. 
+    
+    ** 
+    When setting or looking up on a Date/Time field the format is: YYYY-MM-DDTHH:mm:SS.sssZ
+
+    For instance, if you were looking for an Event with a due date/time of 4/20/2005 at 10:00 AM PST, 
+    you would search for Events where ActivityDateTime equals 2005-04-20T18:00:00.000Z .
+    Note: The force.com dataloader can also take the format with a 3 character time zone, 
+    for example - 2005-04-20T10:00:00.000PDT
+    
+    All of the system modification stamps (Created Date, Last Modified Date, Converted Date, etc...) 
+    are Date/Time fields and will be searched and displayed in this format through the API.
+    
+    All Date/Times are recorded in salesforce.com in Greenwich Mean Time. 
+    This means that you will have to search for your events based on GMT. 
+    For example, PST is 8 hours before GMT. Therefore, 10:00 AM PST will register in Salesforce as 6:00 PM GMT.
+    **
+
+
+// Data Loading_End
+
+// Jitterbit Advantagious
+
+    http://blog.wdcigroup.net/2012/05/comparing-the-jitterbit-salesforce-data-loader-how-does-it-look/ 
+    
+    http://cloud4good.com/announcements/data-migration-jitterbit-data-loader/
+    
+   
+
+
+//  Bulk API Data -  Data Loader
+    -------------------------
+
+    http://wiki.developerforce.com/page/Loading_Large_Data_Sets_with_the_Force.com_Bulk_API
+    
+    It's important to take the Bulk API limits into account. In addition to the Bulk API limits, there are a few changes to be aware of:
+
+    Null values are processed differently, so instead of sending a blank value in the CSV file, 
+    you need to use #N/A instead.
+    There is no field truncation header option
+    Binary files cannot be processed with the Bulk API
+
+-->
+
+//  Campaign in Salesforce
+------------------------------------------
+    http://www.wikihow.com/Create-a-Campaign-in-Salesforce
+    
+
+</apex:page>

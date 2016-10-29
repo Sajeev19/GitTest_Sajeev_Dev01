@@ -1,0 +1,24 @@
+<apex:page controller="Dynamic_Apex_Controller" sidebar="false">
+  <apex:form >
+    <apex:actionFunction action="{!getFields}" name="fun" reRender="pbFields" />
+    <apex:pageblock >
+      <apex:pageblockSection >
+        <apex:pageblockSectionItem >
+          <apex:outputLabel value="All Objects"/>
+          <apex:selectList value="{!selectedObj}" multiselect="false" size="1" onchange="fun()">
+            <apex:selectOptions value="{!items}"/>
+          </apex:selectList>
+        </apex:pageblockSectionItem>
+     </apex:pageblockSection>
+    </apex:pageblock>
+    <apex:outputPanel id="pbFields">
+      <apex:pageBlock rendered="{!renderResult }">
+        <apex:pageBlockSection >
+          <apex:pageblockTable value="{!fieldList}" var="f">
+            <apex:column headerValue="{!selectedObj} Field Names" value="{!f}"/>
+          </apex:pageblockTable>
+          </apex:pageBlockSection>
+       </apex:pageBlock>
+     </apex:outputPanel>
+  </apex:form>
+</apex:page>
