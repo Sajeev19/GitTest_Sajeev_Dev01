@@ -1,5 +1,9 @@
 public class MultiAddCExController {
 
+/*
+Added comment
+
+*/
 //http://kemissalesforceworld.wordpress.com/2012/12/29/managing-multiple-records-at-a-time-via-visualforce/
 
 
